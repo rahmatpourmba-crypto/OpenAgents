@@ -1,5 +1,9 @@
-1. **Remove Instagram dependency**: Update `fetch_and_upload_yasser_viral.py` and `fetch_and_upload_ai_viral.py` (or create a new script) to search and download viral videos directly from YouTube Shorts using `yt-dlp`.
-2. **Apply Branding**: Modify the code so that downloaded videos are processed (e.g., logo added) to avoid direct copyright matches, similar to what is currently done.
-3. **Adjust Pacing Schedule**: Update the pacing in `dispatch_cycle.py` to ensure 5 videos are posted per day with a minimum 60-minute interval (instead of the current 90-minute gaps and 8 videos per day) for both Quran and AI channels.
-4. **Pre-commit Steps**: Ensure proper testing, verification, review, and reflection are done.
-5. **Submit**: Submit the changes with a clear commit message.
+1. **Remove Instagram dependency for Quran Channel**: Edit `fetch_and_upload_yasser_viral.py` to replace `instagrapi` usage with `yt-dlp` in `search_candidates` and `find_and_download_viral_reel`. We will search YouTube using target keywords, filter for duration < 60s and views > 1M, and download the best match.
+2. **Remove Instagram dependency for AI Channel**: Edit `fetch_and_upload_ai_viral.py` to update `find_and_download_viral_ai_reel` to use `yt-dlp` to search YouTube for viral tech/AI shorts instead of Instagram.
+3. **Apply Branding via FFmpeg**: Edit the download logic in `fetch_and_upload_yasser_viral.py` and `fetch_and_upload_ai_viral.py` to add an FFmpeg command that overlays `assets/branding/logo_noor_alquran.png` on the downloaded video to bypass simple copyright matching.
+4. **Adjust Pacing Schedule for Algeria Timezone**: Update the `dispatch_cycle.py` schedule logic. Set `DAY_START_UTC_MIN` to 900 (15:00 UTC, which is 16:00/4 PM Algeria). Set `QURAN_DAILY_TARGET` and `AI_DAILY_TARGET` to 5. Keep `SLOT_SPACING_MIN` at 90. Change `LATEST_UPLOAD_REL_MIN` to 8 * 60 (end of 11 PM Algeria window). Update `_fmt` function to print Algeria time.
+5. **Update GitHub Cron**: Update `.github/workflows/daily_shorts.yml` to trigger the workflow with cron during the 15:00 - 22:00 UTC window.
+6. **Verify New Logic**: Run a test execution (e.g., a dry run of `dispatch_cycle.py` or manually test the new functions in python) to verify the new YouTube fetching and updated pacing schedule work correctly.
+7. **Test the Pipeline**: Run all relevant tests to ensure the changes are correct and have not introduced regressions.
+8. **Pre-commit Steps**: Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+9. **Submit**: Submit the changes with a clear commit message.
