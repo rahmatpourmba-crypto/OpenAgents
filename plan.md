@@ -1,9 +1,5 @@
-1. **Remove Instagram dependency for Quran Channel**: Edit `fetch_and_upload_yasser_viral.py` to replace `instagrapi` usage with `yt-dlp` in `search_candidates` and `find_and_download_viral_reel`. We will search YouTube using target keywords, filter for duration < 60s and views > 1M, and download the best match.
-2. **Remove Instagram dependency for AI Channel**: Edit `fetch_and_upload_ai_viral.py` to update `find_and_download_viral_ai_reel` to use `yt-dlp` to search YouTube for viral tech/AI shorts instead of Instagram.
-3. **Apply Branding via FFmpeg**: Edit the download logic in `fetch_and_upload_yasser_viral.py` and `fetch_and_upload_ai_viral.py` to add an FFmpeg command that overlays `assets/branding/logo_noor_alquran.png` on the downloaded video to bypass simple copyright matching.
-4. **Adjust Pacing Schedule for Algeria Timezone**: Update the `dispatch_cycle.py` schedule logic. Set `DAY_START_UTC_MIN` to 900 (15:00 UTC, which is 16:00/4 PM Algeria). Set `QURAN_DAILY_TARGET` and `AI_DAILY_TARGET` to 5. Keep `SLOT_SPACING_MIN` at 90. Change `LATEST_UPLOAD_REL_MIN` to 8 * 60 (end of 11 PM Algeria window). Update `_fmt` function to print Algeria time.
-5. **Update GitHub Cron**: Update `.github/workflows/daily_shorts.yml` to trigger the workflow with cron during the 15:00 - 22:00 UTC window.
-6. **Verify New Logic**: Run a test execution (e.g., a dry run of `dispatch_cycle.py` or manually test the new functions in python) to verify the new YouTube fetching and updated pacing schedule work correctly.
-7. **Test the Pipeline**: Run all relevant tests to ensure the changes are correct and have not introduced regressions.
-8. **Pre-commit Steps**: Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
-9. **Submit**: Submit the changes with a clear commit message.
+1. **Apply Mega-Prompt**: Integrate the mega-prompt logic into `fetch_and_upload_yasser_viral.py` (inside the `main` function) and `fetch_and_upload_ai_viral.py` (inside the `publish_twin_ai_video` function). We will import `get_optimized_metadata` from `metadata_optimizer.py` and replace `title`, `description`, and `tags` just before uploading.
+2. **Verify changes**: Run `python -c` snippets to import and verify `get_optimized_metadata` outputs correct fields, and check git diff.
+3. **Test the Pipeline**: Run all relevant tests to ensure the changes are correct and have not introduced regressions.
+4. **Pre-commit Steps**: Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+5. **Submit**: Submit the changes with a clear commit message.
