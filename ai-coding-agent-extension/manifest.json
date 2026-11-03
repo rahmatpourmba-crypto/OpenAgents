@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "AI Coding Agent Pro",
+  "version": "1.0.0",
+  "description": "An advanced AI coding agent with support for multiple models (Gemini, Claude, DeepSeek, ChatGPT) and local system access.",
+  "permissions": [
+    "storage",
+    "sidePanel",
+    "nativeMessaging",
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open AI Agent"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
