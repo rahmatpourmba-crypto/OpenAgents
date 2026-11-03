@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Agent Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="model-selector">
+                <select id="ai-model-select">
+                    <option value="gemini">Google Gemini</option>
+                    <option value="claude">Anthropic Claude</option>
+                    <option value="deepseek">DeepSeek Coder</option>
+                    <option value="chatgpt">OpenAI ChatGPT</option>
+                    <option value="grok">xAI Grok</option>
+                </select>
+            </div>
+            <div class="header-actions">
+                <button id="settings-btn" title="Settings">⚙️</button>
+                <button id="clear-memory-btn" title="Clear Context">🧹</button>
+            </div>
+        </header>
+
+        <main class="chat-container" id="chat-history">
+            <div class="message system-message">
+                <div class="message-content">Welcome to AI Coding Agent Pro. Local terminal and git capabilities are enabled. Select your model above to begin.</div>
+            </div>
+        </main>
+
+        <footer class="input-container">
+            <textarea id="user-input" placeholder="Ask a coding question or command the terminal..."></textarea>
+            <div class="input-actions">
+                <button id="send-btn" class="primary-btn">Send</button>
+                <button id="terminal-toggle-btn" class="secondary-btn">Terminal</button>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

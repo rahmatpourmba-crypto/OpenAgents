@@ -1,0 +1,9 @@
+{
+  "name": "com.ai.agent.host",
+  "description": "AI Coding Agent Pro Native Host",
+  "path": "agent_host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://<EXTENSION_ID_GOES_HERE>/"
+  ]
+}
